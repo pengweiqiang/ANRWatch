@@ -15,6 +15,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void anr(View view){
+        //模拟ANR操作
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {

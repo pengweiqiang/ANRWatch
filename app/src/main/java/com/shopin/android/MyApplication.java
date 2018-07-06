@@ -16,6 +16,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        //开启ANR监听
         new ANRWatchDog().start();
 
     }

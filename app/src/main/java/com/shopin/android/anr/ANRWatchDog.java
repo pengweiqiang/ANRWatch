@@ -8,6 +8,7 @@ import android.util.Log;
  * @author will on 2018/7/6 14:51
  * @email pengweiqiang64@163.com
  * @description
+ * 在该线程中，我们首先给主线程发送消息，然后睡眠指定时间，之后监测消息是否被处理，若未被处理，则抛出ANR异常。
  * @Version
  */
 
@@ -20,10 +21,13 @@ public class ANRWatchDog extends Thread {
     public static final int ACTIVITY_ANR_TIMEOUT = 2000;
 
 
+    //用来判断消息是否被处理
     private static int lastTimeTick = -1;
     private static int timeTick = 0;
 
-
+    /**
+     * 用来给主线程发送消息，并处理消息。
+     */
     private Handler watchDogHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
